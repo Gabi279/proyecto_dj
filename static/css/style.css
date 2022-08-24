@@ -1,0 +1,36 @@
+.es{
+    color: crimson;
+}
+.en{
+    color: rgb(63, 20, 220);
+}
+.check{
+    position: relative;
+    width: 50px;
+}
+.check:before{
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background: black;
+    border-radius: 25px;
+}
+.check:after{
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: rgb(207, 205, 205);
+    border-radius: 25px;
+    transition: 0,25s;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+.check:checked:after{
+    left: 25px;
+    border: 2px solid rgb(70, 56, 153);
+}
+.check:checked:before{
+    background: rgb(70, 56, 153);
+}
