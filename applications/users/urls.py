@@ -39,5 +39,11 @@ urlpatterns = [
         views.UserDeleteView.as_view(),
         name='user-delete',
     ),
+    
+    # apis
+    path(
+        'api/users/list/',
+        views.UsersListApiView.as_view(),
+    ),
 ]
 

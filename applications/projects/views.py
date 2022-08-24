@@ -6,8 +6,17 @@ from django.views.generic import (
     CreateView
 )
 
-from .forms import ProjectForm
+from rest_framework.generics import(
+    ListAPIView,
+)
+
+from .serializers import ProjectsSerializer
+
+from applications.users.mixins import SuperUserPermisionMixin
+
+from .forms import ProjectForm, ProyectUserForm
 from .models import Proyectos, ProyectosUsuarios
+
 
 # Create your views here.
 
@@ -37,21 +46,32 @@ class ProjectUserView(ListView):
         context["proyecto"] = ProyectosUsuarios.objects.all()
         return context
     
+class ProjectsListApiView(ListAPIView):
 
-class ProyectoCreateView(CreateView):
+    serializer_class = ProjectsSerializer
+    
+    def get_queryset(self):
+        return Proyectos.objects.all()
+
+class ProyectoCreateView(SuperUserPermisionMixin, CreateView):
     template_name = "projects/new_project.html"
     model = Proyectos
     form_class = ProjectForm
+    
+class ProyectoUserCreateView(SuperUserPermisionMixin, CreateView):
+    template_name = "projects/new_projectuser.html"
+    model = ProyectosUsuarios
+    form_class = ProyectUserForm
 
     
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(SuperUserPermisionMixin, UpdateView):
     template_name = "projects/proj_update.html"
     model = Proyectos
     form_class = ProjectForm
     success_url = reverse_lazy('home_app:home')
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(SuperUserPermisionMixin, DeleteView):
     template_name = "projects/proj_delete.html"
     model = Proyectos
     success_url = reverse_lazy('project_app:proyectos')

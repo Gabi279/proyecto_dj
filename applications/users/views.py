@@ -12,11 +12,17 @@ from django.views.generic import(
 
 from django.views.generic.edit import(FormView)
 
+from .serializers import UserSerializer
+
 from .forms import(
     LoginForm, 
     UpdatePasswordForm, 
     UserRegisterForm,
     ) 
+
+from rest_framework.generics import(
+    ListAPIView,
+    )
 
 from .models import User
 
@@ -36,6 +42,12 @@ class UsersListView(ListView):
         context["users"] = User.objects.all()
         return context
 
+class UsersListApiView(ListAPIView):
+
+    serializer_class = UserSerializer
+    
+    def get_queryset(self):
+        return User.objects.all()
 
 class UserRegisterView(FormView):
     template_name = 'users/register.html'
@@ -54,7 +66,7 @@ class UserRegisterView(FormView):
         )
 
         return HttpResponseRedirect(
-            reverse('users_app:user-verification'),
+            reverse('home_app:home'),
             kwargs={'pk': usuario.id}
         )
                 

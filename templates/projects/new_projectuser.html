@@ -24,7 +24,8 @@ Registro
                     <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">{% csrf_token %}
                         <div class="cell large-6">
                             <label>Nombre:
-                                {{ form.name }} 
+                                {{ form.user }} 
+                                {{ form.proj_user }} 
                             </label>
                         </div>
                         <button type="submit" class="cell hollow button primary">Registrar</button>

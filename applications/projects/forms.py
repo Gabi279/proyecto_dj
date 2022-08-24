@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Proyectos
+from .models import Proyectos, ProyectosUsuarios
 
 class ProjectForm(forms.ModelForm):
     
@@ -8,4 +8,13 @@ class ProjectForm(forms.ModelForm):
         model = Proyectos
         fields = (
             'name',
+        )
+        
+class ProyectUserForm(forms.ModelForm):
+    
+    class Meta:
+        model = ProyectosUsuarios
+        fields = (
+            'user',
+            'proj_user',
         )

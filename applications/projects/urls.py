@@ -16,6 +16,10 @@ urlpatterns = [
         views.ProyectoCreateView.as_view(),
         name='new-project'
     ),
+    path('new_project_user/', 
+        views.ProyectoUserCreateView.as_view(),
+        name='new-project-user'
+    ),
     path(
     'project_update/<pk>/', 
     views.ProjectUpdateView.as_view(), 
@@ -25,5 +29,11 @@ urlpatterns = [
     'project_delete/<pk>/', 
     views.ProjectDeleteView.as_view(),
     name='project-delete',
+    ),
+    
+    # apis
+    path(
+        'api/projects/list/',
+        views.ProjectsListApiView.as_view(),
     ),
 ]
