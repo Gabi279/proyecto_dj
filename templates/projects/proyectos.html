@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block title %}
+Proyectos
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<table>
+    <thead>
+      <tr>
+        <th width="200">Código</th>
+        <th>Proyectos</th>
+        <th width="150">Activo</th>
+        <th width="150">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in projects %}
+      <tr>
+        <td>{{p.id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.is_active}}</td>
+{% comment %}         <td>
+          <a class="button tiny" href="{% url 'project_app:project-update' pk=proyectos.pk %}">Modificar</a>
+          <a class="button tiny" href="#">Inactivar</a>
+          <a class="button tiny" href="{% url 'project_app:user-delete' pk=proyectos.pk %}">Eliminar</a>
+        </td> {% endcomment %}
+      </tr>
+      </tr>
+
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h5>Registrar un proyecto</h5>
+    <a href="{% url 'project_app:new-project'%}">Nuevo proyecto</a>
+  </div>
+
+{% endblock content %}

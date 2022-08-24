@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block title %}
+Usuarios por proyectos 
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<table>
+    <thead>
+      <tr>
+        <th width="200">Código</th>
+        <th>Usuario</th>
+        <th width="150">Proyecto</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pu in proj_users %}
+      <tr>
+        <td>{{pu.id}}</td>
+        <td>{{pu.user}}</td>
+        <td>{{pu.proj_user}}</td>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}

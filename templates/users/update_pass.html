@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block title %}
+Registro
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell medium-10 large-6" style="margin-top: 2em;">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                  <h4>Ingrese sus datos</h4>
+                </div>
+                <div class="card-section">
+                    <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="cell large-12">
+                        <div class="cell medium-12">
+                            <label>Contraseña:
+                                {{ form.password1 }} 
+                            </label>
+                        </div>
+                        <div class="cell medium-12">
+                            <label>Repetir Contraseña:
+                                {{ form.password2 }} 
+                            </label>
+                            {% for e in form.password2.errors %}
+                             <p style="color:red;">{{e}}</p>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="cell hollow button primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

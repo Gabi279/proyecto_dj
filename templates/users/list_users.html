@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block title %}
+Lista de usuarios
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<table>
+    <thead>
+      <tr>
+        <th width="200">Código</th>
+        <th>Username</th>
+        <th width="150">Nombre</th>
+        <th width="150">Tipo</th>
+        <th width="150">Activo</th>
+        <th width="150">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+      <tr>
+        <td>{{usuario.id}}</td>
+        <td>{{usuario.username}}</td>
+        <td>{{usuario.name}}</td>
+        <td>{{usuario.rol}}</td>
+        <td>{{usuario.is_active}}</td>
+        <td>
+          <a class="button tiny" href="{% url 'users_app:user-update' pk=user.pk %}">Modificar</a>
+          <a class="button tiny" href="#">Inactivar</a>
+          <a class="button tiny" href="{% url 'users_app:user-delete' pk=user.pk %}">Eliminar</a>
+        </td>
+      </tr>
+
+    {% endfor %}
+    </tbody>
+  </table>
+
+<div class="callout">
+  <h5>Registrar un nuevo usuario</h5>
+  <a href="{% url 'users_app:user-register'%}">Nuevo usuario</a>
+</div>
+
+{% endblock content %}

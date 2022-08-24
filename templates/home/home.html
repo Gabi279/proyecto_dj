@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 250px;">
+    <li><a href="{% url 'project_app:proyectos' %}">Proyectos de la empresa</a></li>
+    <li><a href="{% url 'users_app:list-users' %}">Usuarios</a></li>
+    <li><a href="{% url 'project_app:projects-users' %}">Usuarios dentro de cada proyecto</a></li>
+  </ul>
+
+{% endblock content %}
+

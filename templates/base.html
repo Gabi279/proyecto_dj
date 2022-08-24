@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" media="(prefers-color-scheme: light)" href="{% static 'css/light.css' %}">
+  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{% static 'css/dark.css' %}">
+  <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
+  <title>{% block title %}{% endblock title %}</title>
+  {% block description %}{% endblock description %}
+  {% block tags %}{% endblock tags %}
+  {% block css %}{% endblock css %}
+</head>
+<body>
+
+  <div class="top-bar stacked-for-medium">
+    <div class="top-bar-right">
+      <ul class="menu">
+        <dark-mode-toggle
+        id="dark-mode-toggle-1"
+        legend="Tema claro/oscuro"
+        appearance="switch"
+        dark="Oscuro"
+        light="Claro"
+        remember="Guardar tema"
+      ></dark-mode-toggle>
+    </ul>
+    </div>
+</div>
+
+
+  {% block content %}
+  {% endblock content %}
+
+  {% block js %}{% endblock js %}
+
+
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

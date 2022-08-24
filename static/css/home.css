@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    align-items: center;
+    background: #e9dfdf;
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+.blog-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
