@@ -29,6 +29,7 @@ class UserRegisterForm(forms.ModelForm):
             'last_name',
             'phone',
             'rol',
+            'is_active',
         )
 
     def clean_password2(self):
@@ -62,76 +63,22 @@ class LoginForm(forms.Form):
             return self.cleaned_data
     
 class UpdatePasswordForm(forms.Form):
-    
-      class Meta:
-        model = User
-        fields = (
-            'username',
-            'email',
-            'name',
-            'last_name',
-            'phone',
-            'rol',
-            'is_active',
+
+    password1 = forms.CharField(
+        label='Contraseña',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder': 'Contraseña Actual'
+            }
         )
-        
-        widgets = {
-            'username': forms.TextInput(
-                attrs={
-                    'placeholder': 'Nombre de usuario ...',
-                    'class': 'input-group-field',
-                }
-            ),
-            'email': forms.EmailInput(
-                attrs={
-                    'placeholder': 'Correo Electronico ...',
-                    'class': 'input-group-field',
-                }
-            ),
-            'name': forms.TextInput(
-                attrs={
-                    'placeholder': 'Nombre ...',
-                    'class': 'input-group-field',
-                }
-            ),
-            'last_name': forms.TextInput(
-                attrs={
-                    'placeholder': 'Apellido ...',
-                    'class': 'input-group-field',
-                }
-            ),
-            'phone': forms.NumberInput(
-                attrs={
-                    'placeholder': 'Teléfono ...',
-                    'class': 'input-group-field',
-                }
-            ),
-            'rol': forms.Select(
-                attrs={
-                    'placeholder': 'Rol ...',
-                    'class': 'input-group-field',
-                }
-            ),
-            'is_active': forms.CheckboxInput(
-                attrs={
-                    'placeholder': 'Rol ...',
-                    'class': 'input-group-field',
-                },
-            ),
-        }
-    
-        password1 = forms.CharField(
-            label='Contraseña',
-            required=True,
-            widget=forms.PasswordInput(
-                attrs={'placeHolder': 'Contraseña actual'}
-            )
+    )
+    password2 = forms.CharField(
+        label='Contraseña',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder': 'Contraseña Nueva'
+            }
         )
-        
-        password2 = forms.CharField(
-            label='Contraseña',
-            required=True,
-            widget=forms.PasswordInput(
-                attrs={'placeHolder': 'Contraseña nueva'}
-            )
-        )
+    )

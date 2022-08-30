@@ -12,7 +12,7 @@
             <ul class="menu" style="justify-content: flex-end;">
                 <li>
                     {% if not user.is_anonymous %}
-                    <a href="#" class="success button"> {{user}} </a>
+                    <a href="{% url 'users_app:user-login' %}" class="success button"> {{user}} </a>
                     {% else %}
                     <a href="{% url 'users_app:user-login' %}" class="warning button">Acceder</a>
                     {% endif %}

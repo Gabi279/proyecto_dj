@@ -9,6 +9,5 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('__all__')
 
-""" class UserVSerializer(serializers.Serializer):
-    id = serializers.IntegerField() """
+
 

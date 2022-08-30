@@ -27,14 +27,14 @@ Lista de usuarios
     <tbody>
         {% for usuario in usuarios %}
       <tr>
-        <td>{{usuario.id}}</td>
+        <td>{{usuario.auto_increment_id}}</td>
         <td>{{usuario.username}}</td>
         <td>{{usuario.name}}</td>
         <td>{{usuario.rol}}</td>
         <td>{{usuario.is_active}}</td>
         <td>
           <a class="button tiny" href="{% url 'users_app:user-update' pk=user.pk %}">Modificar</a>
-          <a class="button tiny" href="#">Inactivar</a>
+          <a class="button tiny" href="{% url 'users_app:user-active' pk=user.pk %}">Inactivar</a>
           <a class="button tiny" href="{% url 'users_app:user-delete' pk=user.pk %}">Eliminar</a>
         </td>
       </tr>

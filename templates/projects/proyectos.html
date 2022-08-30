@@ -28,11 +28,11 @@ Proyectos
         <td>{{p.id}}</td>
         <td>{{p.name}}</td>
         <td>{{p.is_active}}</td>
-{% comment %}         <td>
-          <a class="button tiny" href="{% url 'project_app:project-update' pk=proyectos.pk %}">Modificar</a>
-          <a class="button tiny" href="#">Inactivar</a>
-          <a class="button tiny" href="{% url 'project_app:user-delete' pk=proyectos.pk %}">Eliminar</a>
-        </td> {% endcomment %}
+        <td>
+          <a class="button tiny" href="{% url 'project_app:project-update' p.id %}">Modificar</a>
+          <a class="button tiny" href="{% url 'project_app:project-active-p' p.id %}">Inactivar</a>
+          <a class="button tiny" href="{% url 'project_app:project-delete' p.id %}">Eliminar</a>
+        </td>
       </tr>
       </tr>
 

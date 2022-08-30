@@ -25,6 +25,11 @@ urlpatterns = [
         name='user-update'
         ),
     path(
+        'user_active/<pk>/', 
+        views.UserActiveView.as_view(), 
+        name='user-active'
+        ),
+    path(
         'logout/', 
         views.LoguotView.as_view(), 
         name='user-logout'

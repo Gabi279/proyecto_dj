@@ -8,6 +8,7 @@ class ProjectForm(forms.ModelForm):
         model = Proyectos
         fields = (
             'name',
+            'is_active',
         )
         
 class ProyectUserForm(forms.ModelForm):

@@ -2,7 +2,7 @@
 {% load  static %}
 
 {% block title %}
-Registro
+Actividad
 {% endblock title %}
 
 {% block css %}
@@ -18,18 +18,18 @@ Registro
         <div class="cell medium-10 large-6" style="margin-top: 2em;">
             <div class="card" style="width: 100%;">
                 <div class="card-divider">
-                  <h4>Nuevo proyecto</h4>
+                  <h4>Actividad</h4>
                 </div>
                 <div class="card-section">
                     <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">{% csrf_token %}
-                        <div class="cell large-6">
-                            <label>Nombre:
-                                {{ form.user }} 
-                            <label>Proyecto:
-                                {{ form.proj_user }} 
+                        <div class="cell large-12">
+                        <div class="cell medium-6">
+                            <label>Activar:
+                                {{ form.is_active }} 
                             </label>
                         </div>
-                        <button type="submit" class="cell hollow button primary">Registrar</button>
+                        </div>
+                        <button type="submit" class="cell hollow button primary">Actualizar</button>
                     </form>
                 </div>
             </div>

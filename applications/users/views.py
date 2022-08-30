@@ -67,7 +67,7 @@ class UserRegisterView(FormView):
 
         return HttpResponseRedirect(
             reverse('home_app:home'),
-            kwargs={'pk': usuario.id}
+            kwargs={'pk': usuario.auto_increment_id}
         )
                 
         
@@ -97,7 +97,7 @@ class LoguotView(View):
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update_pass.html'
     form_class = UpdatePasswordForm
-    success_url = reverse_lazy('users_app:user-login')
+    success_url = reverse_lazy('home_app:home')
     login_url = reverse_lazy('users_app:user-login')
     
     def form_valid(self, form):
@@ -119,6 +119,12 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
     
 class UserUpdateView(UpdateView):
     template_name = "users/update.html"
+    model = User
+    form_class = UserRegisterForm
+    success_url = reverse_lazy('home_app:home')
+    
+class UserActiveView(UpdateView):
+    template_name = "users/active.html"
     model = User
     form_class = UserRegisterForm
     success_url = reverse_lazy('home_app:home')

@@ -53,25 +53,35 @@ class ProjectsListApiView(ListAPIView):
     def get_queryset(self):
         return Proyectos.objects.all()
 
-class ProyectoCreateView(SuperUserPermisionMixin, CreateView):
+class ProyectoCreateView(CreateView):
     template_name = "projects/new_project.html"
     model = Proyectos
     form_class = ProjectForm
+    success_url = reverse_lazy('project_app:proyectos')
+
     
-class ProyectoUserCreateView(SuperUserPermisionMixin, CreateView):
+class ProyectoUserCreateView(CreateView):
     template_name = "projects/new_projectuser.html"
     model = ProyectosUsuarios
     form_class = ProyectUserForm
+    success_url = reverse_lazy('project_app:projects-users')
 
     
-class ProjectUpdateView(SuperUserPermisionMixin, UpdateView):
+class ProjectUpdateView(UpdateView):
     template_name = "projects/proj_update.html"
+    model = Proyectos
+    form_class = ProjectForm
+    success_url = reverse_lazy('home_app:home')
+    
+    
+class ProjectActiveView(UpdateView):
+    template_name = "projects/active_p.html"
     model = Proyectos
     form_class = ProjectForm
     success_url = reverse_lazy('home_app:home')
 
 
-class ProjectDeleteView(SuperUserPermisionMixin, DeleteView):
+class ProjectDeleteView(DeleteView):
     template_name = "projects/proj_delete.html"
     model = Proyectos
     success_url = reverse_lazy('project_app:proyectos')

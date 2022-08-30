@@ -18,13 +18,13 @@ Registro
         <div class="cell medium-10 large-6" style="margin-top: 2em;">
             <div class="card" style="width: 100%;">
                 <div class="card-divider">
-                  <h4>Ingrese sus datos</h4>
+                  <h4>Cambiar contraseña: {{user.username}}</h4>
                 </div>
                 <div class="card-section">
                     <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">{% csrf_token %}
                         <div class="cell large-12">
                         <div class="cell medium-12">
-                            <label>Contraseña:
+                            <label>Contraseña nueva:
                                 {{ form.password1 }} 
                             </label>
                         </div>
@@ -36,7 +36,7 @@ Registro
                              <p style="color:red;">{{e}}</p>
                             {% endfor %}
                         </div>
-                        <button type="submit" class="cell hollow button primary">Registrar</button>
+                        <button type="submit" class="cell hollow button primary">Actualizar</button>
                     </form>
                 </div>
             </div>

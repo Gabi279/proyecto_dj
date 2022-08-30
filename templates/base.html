@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="{% static 'css/app.css' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" media="(prefers-color-scheme: light)" href="{% static 'css/light.css' %}">
   <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{% static 'css/dark.css' %}">
   <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
@@ -17,10 +19,6 @@
   {% block css %}{% endblock css %}
 </head>
 <body>
-
-  <span class="es">Español</span>
-  <input type="checkbox" class="check">
-  <span class="en">Inglés</span>
 
   <div class="top-bar stacked-for-medium">
     <div class="top-bar-right">
@@ -35,7 +33,9 @@
       ></dark-mode-toggle>
     </ul>
     </div>
-</div>
+  </div>
+
+  <section class="home"></section>
 
   {% block content %}
   {% endblock content %}
@@ -44,6 +44,5 @@
 
 
   <script src="{% static 'js/app.js' %}"></script>
-  <script src="{% static 'js/languajes.js' %}"></script>
 </body>
 </html>

@@ -9,6 +9,5 @@ class ProjectsSerializer(serializers.ModelSerializer):
         model = Proyectos
         fields = ('__all__')
 
-""" class ProjectVSerializer(serializers.Serializer):
-    id = serializers.IntegerField() """
+
 
